@@ -17,7 +17,8 @@ def main(input_file: str, output_file: str, cutoff: float):
     distances = np.sum((array - np.roll(array, -1, axis=0)) ** 2, axis=1) ** 0.5
     val = 1
     # need to randomize initial subset as this runs for 1 tomo only
-    subset = np.random.choice([1,2])
+    rand = np.random.default_rng()
+    subset = rand.choice([1,2])
     # don't keep randomizing subsets as we assume this has less drift from the wanted 50/50
     new_subset = {1: 2, 2: 1}
     subsets = []
